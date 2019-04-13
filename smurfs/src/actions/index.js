@@ -25,7 +25,7 @@ export const getSmurf = () => dispatch => {
   dispatch({ type: FETCHING });
 
   axios 
-    .get('https://localhost:3333/smurfs')
+    .get('http://localhost:3333/smurfs')
     .then( res => {
       dispatch({
         type: SUCCESS,
@@ -42,7 +42,7 @@ export const getSmurf = () => dispatch => {
 };
 
 export const addSmurf = smurf => {
-  console.log(smurf)
+  console.log(smurf.name)
   return{
     type: ADD, 
     payload: smurf,

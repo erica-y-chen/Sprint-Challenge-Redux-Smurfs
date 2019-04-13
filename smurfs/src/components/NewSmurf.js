@@ -5,38 +5,40 @@ import {addSmurf} from '../actions'
 class NewSmurf extends React.Component{
     constructor(props) {
         super(props); 
-        this.state= {
-            name: props.input || ""
+        this.state={
+            smurf: {
+                name: "",
+                age: "",
+                height: "",
+        }
         };
     }
 
     handleChanges = e => {
+        // const {name, value} = e.target;
+
         this.setState({
-            name: e.target.value
+            smurf: {
+                ...this.state.smurf,
+                [e.target.name]: e.target.value,
+            }        
         });
     };
 
     render() {
         return(
-            <form onSubmit = {(e) => {
-                e.preventDefault();
-                this.props.addSmurf(this.state.name);
-                
-                this.setState({
-                    name: '',
-                })
-            }}>
+            <form>
                 <input className="input"
                     type="text"
                     name="name"
-                    value = {this.state.name}
+                    value = {this.state.smurf.name}
                     onChange = {this.handleChanges}
                     placeholder = "name"
                     /> 
-                {/* <input className="input"
+                <input className="input"
                     type="text"
                     name="age"
-                    value = {this.state.age}
+                    value = {this.state.smurf.age}
                     onChange = {this.handleChanges}
                     placeholder = "age"
                 /> 
@@ -44,10 +46,22 @@ class NewSmurf extends React.Component{
                 <input className="input"
                     type="text"
                     name="height"
-                    value = {this.state.height}
+                    value = {this.state.smurf.height}
                     onChange = {this.handleChanges}
                     placeholder = "height"
-                />  */}
+                /> 
+                <button onClick = {(e) => {
+                    e.preventDefault();
+                    this.props.addSmurf(this.state.smurf);
+                    
+                    this.setState({
+                        smurf: {
+                            name: '',
+                            age: '',
+                            height: '',
+                        }
+                    })
+                    }}>Submit</button>
             </form>
         )
     }

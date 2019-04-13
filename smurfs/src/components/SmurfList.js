@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {getSmurf, deleteSmurf} from '../actions';
-import {Smurf} from './Smurf'
+import Smurf from './Smurf'
 import './smurf.css'
 
 class SmurfList extends React.Component {
@@ -27,7 +27,7 @@ class SmurfList extends React.Component {
                 {smurf.name}
                 <button onClick= {() => this.props.deleteSmurf(smurf.id)} key={smurf.id}>delete</button>
                 </div>)})}
-                        {/* return (<Smurf smurf={smurf} name={smurf.name}/>)})} */}
+                        return (<Smurf smurf={smurf} name={smurf.name}/>)})}
             </ul>
         )
     }

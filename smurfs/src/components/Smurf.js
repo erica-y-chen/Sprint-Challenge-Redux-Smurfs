@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 
 const Smurf = props => {
     return(
-        <div>{props.smurf.name} </div>
+        <div>{props.smurf.name} {props.smurf.height} {props.smurf.age}</div>
+        
     ) 
 };
 

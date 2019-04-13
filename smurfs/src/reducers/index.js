@@ -25,11 +25,7 @@ import {FETCHING, SUCCESS, FAILURE, ADD, DELETE} from '../actions';
 import { totalmem } from 'os';
 
 const initialState = {
-  smurfs: [  {
-    name: 'Brainey',
-    age: 200,
-    height: '5cm'
-  } ],
+  smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
@@ -68,25 +64,25 @@ export default (state = initialState, action ) => {
       
       //adding smurf
       case ADD:
-      // return {
-      //   ...state,
-      //   smurfs: [
-      //     ...state.members,
-      //     {name: action.payload, id: state.smurfs.length + 1, age: 0, height: 10}
-      //   ]
-      // }
-        console.log("Added");
-        let newSmurf = {};
-        newSmurf = {...state, name: action.payload, id: state.smurfs.length + 1};
-        let newArray = [];
-        newArray = [...state.smurfs, newSmurf]
-        console.log(newArray)
-          return{
-            ...state,
-            addingSmurf: true,
-            input: action.payload,
-            smurfs: newArray,
-          };
+      console.log("Added");
+      console.log(action.payload)
+        return {
+          ...state,
+          smurfs: [
+            ...state.smurfs, action.payload
+          ]
+        }
+        // let newSmurf = {};
+        // newSmurf = {...state, name: action.payload[0], id: state.smurfs.length + 1};
+        // let newArray = [];
+        // newArray = [...state.smurfs, newSmurf]
+        // console.log(newArray)
+        //   return{
+        //     ...state,
+        //     addingSmurf: true,
+        //     input: action.payload,
+        //     smurfs: newArray,
+        //   };
 
         case DELETE:
           console.log("deleted");
